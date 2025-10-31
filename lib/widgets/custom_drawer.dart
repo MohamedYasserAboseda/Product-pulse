@@ -98,7 +98,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     );
   }
 
-  // عنصر رئيسي عادي
+  
   Widget _drawerItem({required String title, required IconData icon  }) {
     return ListTile(
       leading: Icon(icon, color: Colors.white),
@@ -106,13 +106,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         title,
         style: const TextStyle(color: Colors.white, fontSize: 20),
       ),
-    //   onTap: () {
-    //   Navigator.pop(context); // يغلق الـ Drawer
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => pages),
-    //   );
-    // },
+  
     );
   }
 
@@ -146,7 +140,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     ],
   );
 }
-//  العنصر الفرعي القابل للتخصيص
+
 Widget _subItem(String title, IconData icon, Widget page) {
   return ListTile(
     leading: Icon(icon, color: Colors.white70, size: 20),
