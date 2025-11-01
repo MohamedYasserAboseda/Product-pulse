@@ -1,9 +1,12 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:software_system/screens/all_prodect.dart';
 import 'package:software_system/screens/forget_password.dart';
 import 'package:software_system/widgets/animation_logo.dart';
 import 'package:software_system/widgets/custom_text_filed.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class Login_screen extends StatefulWidget {
   const Login_screen({super.key});
@@ -18,14 +21,15 @@ class _Login_screenState extends State<Login_screen> {
   bool rememberMe = false;
   bool isloaded = false;
 
- 
   Future<void> _handleLogin() async {
     final supabase = Supabase.instance.client;
 
     if (email.text.isEmpty || password.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Center(child: Text('من فضلك أدخل البريد الإلكتروني وكلمة السر')),
+          content: Center(
+            child: Text('من فضلك أدخل البريد الإلكتروني وكلمة السر'),
+          ),
           backgroundColor: Colors.blueGrey,
           behavior: SnackBarBehavior.floating,
         ),
@@ -52,7 +56,6 @@ class _Login_screenState extends State<Login_screen> {
           ),
         );
 
-      
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const AllProdect()),
@@ -106,15 +109,26 @@ class _Login_screenState extends State<Login_screen> {
                 child: Column(
                   children: [
                     const SizedBox(height: 10),
-                    const AnimatedLogo(imagePath: "assets/Images/smart_inventory.png"),
-                    const Text(
-                      "نبض المنتج",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                    const AnimatedLogo(
+                      imagePath: "assets/Images/smart_inventory.png",
                     ),
+                    AutoSizeText(
+                          "نبض المنتج",
+                          style: GoogleFonts.aBeeZee(fontSize: 18),
+                        )
+                        .animate(
+                          onPlay: (controller) => controller.repeat(),
+                        ) // تكرار دائم
+                        .fadeIn(duration: 500.ms)
+                        .then()
+                        .fadeOut(duration: 500.ms),
                     const SizedBox(height: 5),
                     const Text(
                       "تسجيل الدخول لإدارة عملك",
-                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                     const SizedBox(height: 30),
 
@@ -125,7 +139,10 @@ class _Login_screenState extends State<Login_screen> {
                         padding: EdgeInsets.only(left: 15),
                         child: Text(
                           "البريد الإلكتروني",
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
@@ -144,7 +161,10 @@ class _Login_screenState extends State<Login_screen> {
                         padding: EdgeInsets.only(left: 15),
                         child: Text(
                           "كلمة السر",
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
@@ -172,7 +192,7 @@ class _Login_screenState extends State<Login_screen> {
                         ),
                         const Text(
                           "تذكرنى",
-                          style: TextStyle( 
+                          style: TextStyle(
                             fontSize: 16,
                             color: Color(0xff97989f),
                           ),
@@ -182,7 +202,9 @@ class _Login_screenState extends State<Login_screen> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  ForgetPassword()),
+                              MaterialPageRoute(
+                                builder: (context) => ForgetPassword(),
+                              ),
                             );
                           },
                           child: const Text(
@@ -218,7 +240,9 @@ class _Login_screenState extends State<Login_screen> {
                           height: 40,
                           child: Center(
                             child: isloaded
-                                ? const CircularProgressIndicator(color: Colors.white)
+                                ? const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
                                 : const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -231,7 +255,10 @@ class _Login_screenState extends State<Login_screen> {
                                         ),
                                       ),
                                       SizedBox(width: 5),
-                                      Icon(Icons.arrow_forward, color: Colors.white),
+                                      Icon(
+                                        Icons.arrow_forward,
+                                        color: Colors.white,
+                                      ),
                                     ],
                                   ),
                           ),

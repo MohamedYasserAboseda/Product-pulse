@@ -39,6 +39,9 @@ dependencies:
   page_transition: ^2.2.1
   supabase_flutter: ^2.10.3
   image_picker: 
+  google_fonts: ^6.3.2
+  auto_size_text: ^3.0.0
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:
